@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DdiaApplication {
+public class ReliabilityWorkshopApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DdiaApplication.class, args);
+		SpringApplication.run(ReliabilityWorkshopApplication.class, args);
 	}
 
 }
