@@ -1,0 +1,48 @@
+# application.yml
+server:
+  port: 8083
+
+spring:
+  application:
+    name: reliability-workshop
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      payment-service:
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 10s
+        minimum-number-of-calls: 5
+      inventory-service:
+        sliding-window-size: 5
+        failure-rate-threshold: 60
+        wait-duration-in-open-state: 5s
+
+  retry:
+    instances:
+      payment-service:
+        max-attempts: 3
+        wait-duration: 2s
+        exponential-backoff-multiplier: 2
+
+  bulkhead:
+    instances:
+      payment-service:
+        max-concurrent-calls: 10
+      inventory-service:
+        max-concurrent-calls: 5
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,circuitbreakers,retries
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.example: DEBUG
+    io.github.resilience4j: DEBUG
