@@ -5,16 +5,16 @@ import ddia.example.ddia.model.PaymentRequest;
 import ddia.example.ddia.model.PaymentResponse;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 @Service
 public class PaymentService {
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(PaymentService.class);
+    private static final Logger logger = LoggerFactory.getLogger(PaymentService.class);
     private final Random random = new Random();
 
     // Simulated failure rate (30% by default)

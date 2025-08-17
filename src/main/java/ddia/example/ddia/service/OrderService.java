@@ -7,11 +7,13 @@ import ddia.example.ddia.model.PaymentResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+@Service
 public class OrderService {
     private static final Logger logger = LoggerFactory.getLogger(OrderService.class);
     private final PaymentService paymentService;
